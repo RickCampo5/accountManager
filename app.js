@@ -11,6 +11,8 @@ const MongoStore = require('connect-mongo')(session)
 
 mongoose.Promise = Promise
 
+console.log(process.env.PORT)
+
 mongoose.connect('mongodb://localhost/accountManager', {useNewUrlParser: true})
   .then (() => {
     console.log('Connected to Mongo')
