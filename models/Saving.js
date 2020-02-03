@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 
-const savingsSchema = mongoose.Schema({
-
+const savingsSchema = new mongoose.Schema({
+  name: String,
+  image: String,
+  amount: Number
 }, {
   timestapms: {
     createdAt: 'created_at',

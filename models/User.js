@@ -1,20 +1,21 @@
 const passportLocalMongoose = require('passport-local-mongoose')
-const Schema = require('mongoose').Schema
-const userSchema = new require('mongoose').Schema({
+const mongoose = require('mongoose')
+
+const userSchema = new mongoose.Schema({
   username: String,
   email: String,
   cash: Number,
   transportCard: Number,
   savings: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Saving'
     }
   ],
   debitCards: [
     {
       name: String,
-      money: Number
+      amount: Number
     }
 
   ],
@@ -39,4 +40,4 @@ const userSchema = new require('mongoose').Schema({
 
 userSchema.plugin(passportLocalMongoose, {usernameField: 'email'})
 
-module.exports = require('mongoose').model('User', userSchema)
+module.exports = mongoose.model('User', userSchema)
