@@ -4,9 +4,8 @@
   "description": "API for Account Management web app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./bin/www",
-    "dev": "DEBUG=server-proyect-3:* nodemon ./bin/www"
+    "dev": "DEBUG=api:* nodemon ./bin/www"
   },
   "repository": {
     "type": "git",

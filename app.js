@@ -1,4 +1,4 @@
-require('dotenv').config
+require('dotenv').config()
 
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
@@ -11,11 +11,9 @@ const MongoStore = require('connect-mongo')(session)
 
 mongoose.Promise = Promise
 
-console.log(process.env.PORT)
-
-mongoose.connect('mongodb://localhost/accountManager', {useNewUrlParser: true})
-  .then (() => {
-    console.log('Connected to Mongo')
+mongoose.connect(process.env.LOCALDB, {useNewUrlParser: true})
+  .then (x => {
+    console.log(`Connected to Mongo, DB name: ${x.connections[0].name}`)
   }).catch(error => {
     console.error('Error connecting to mongo', error)
   })
@@ -44,9 +42,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 //passport initilize
-// const passport = require('./helpers/passport')
-// app.use(passport.initialize())
-// app.use(passport.session())
+const passport = require('./helpers/passport')
+app.use(passport.initialize())
+app.use(passport.session())
 
 //Set views
 app.set('views', path.join(__dirname, 'views'))
@@ -57,8 +55,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 //Routes
 const index = require('./routes/index')
 app.use('/', index)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
-})
+
+//Use with Angular
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public/index.html'));
+// })
 
 module.exports = app
