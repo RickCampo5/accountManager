@@ -21,13 +21,13 @@ const userSchema = new mongoose.Schema({
   ],
   creditCards: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'CreditCard'
     }
   ],
   expenses: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Expense'
     }
   ]
