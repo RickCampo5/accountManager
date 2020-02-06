@@ -55,8 +55,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 //Routes
 const index = require('./routes/index')
 const auth = require('./routes/auth')
+const balance = require('./routes/balance')
 app.use('/', auth)
 app.use('/', index)
+app.use('/balance', balance)
 
 //Use with Angular
 // app.get('*', (req, res) => {
