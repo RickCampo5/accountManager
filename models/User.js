@@ -14,10 +14,9 @@ const userSchema = new mongoose.Schema({
   ],
   debitCards: [
     {
-      name: String,
-      amount: Number
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'DebitCard'
     }
-
   ],
   creditCards: [
     {

@@ -5,9 +5,18 @@ const expenseSchema = new mongoose.Schema({
   date: Date,
   amount: Number,
   expenseType: String,
+  cash: Boolean,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
+  },
+  card: {
+    type: mongoose.Schema.Types.ObjectId,
+    refPath: 'onModel'
+  },
+  onModel: {
+    type: String,
+    enum: ['CreditCard', 'DebitCard']
   }
 },{
   timestamps: {

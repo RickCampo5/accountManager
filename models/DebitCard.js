@@ -1,12 +1,8 @@
 const mongoose = require('mongoose')
 
-const creditCardSchema = new mongoose.Schema({
+const debitCardSchema = new mongoose.Schema({
   name: String,
-  limit: Number,
-  expenses: Number,
-  minimalPay: Number,
-  noTaxesPay: Number,
-  dateToPay: Date,
+  amount: Number,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
@@ -18,4 +14,4 @@ const creditCardSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('CreditCard', creditCardSchema)
+module.exports = mongoose.model('DebitCard', debitCardSchema)

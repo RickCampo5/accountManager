@@ -11,7 +11,6 @@ router.post('/signup', (req,res,next) => {
 })
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
-  // req.app.locals.user = req.user
   res.send('logged')
 })
 

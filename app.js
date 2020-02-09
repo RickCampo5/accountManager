@@ -55,10 +55,18 @@ app.use(express.static(path.join(__dirname, 'public')))
 //Routes
 const index = require('./routes/index')
 const auth = require('./routes/auth')
-const balance = require('./routes/balance')
+const user = require('./routes/user')
+const debitCard = require('./routes/debitCard')
+const creditCard = require('./routes/creditCard')
+const expenses = require('./routes/expenses')
+const savings = require('./routes/savings')
 app.use('/', auth)
 app.use('/', index)
-app.use('/balance', balance)
+app.use('/user', user)
+app.use('/debit_cards', debitCard)
+app.use('/credit_cards', creditCard)
+app.use('/expenses', expenses)
+app.use('/savings', savings)
 
 //Use with Angular
 // app.get('*', (req, res) => {
