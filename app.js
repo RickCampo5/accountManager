@@ -11,7 +11,9 @@ const MongoStore = require('connect-mongo')(session)
 
 mongoose.Promise = Promise
 
-mongoose.connect(process.env.LOCALDB, {useNewUrlParser: true})
+console.log(process.env)
+
+mongoose.connect(process.env.PRODDB, {useNewUrlParser: true})
   .then (x => {
     console.log(`Connected to Mongo, DB name: ${x.connections[0].name}`)
   }).catch(error => {
